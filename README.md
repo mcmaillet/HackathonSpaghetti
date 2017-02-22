@@ -1,0 +1,2 @@
+# HackathonSpaghetti
+Clipped code
