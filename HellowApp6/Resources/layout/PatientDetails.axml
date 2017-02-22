@@ -168,6 +168,7 @@
             android:enabled="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/tv_age_label"
             android:minEms="3"
             android:maxEms="3"
             android:textSize="22dp" />
@@ -292,6 +293,27 @@
               android:padding="5dp"
               android:background="@null" />
         </LinearLayout>
+      </LinearLayout>
+      <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|center_horizontal">
+        <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Inject: mL"
+          />
+      <EditText
+        android:id="@+id/et_injection"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textColor="@drawable/edit_field" />
+        <Button
+          android:id="@+id/btn_inject"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="INJECT"/>
       </LinearLayout>
     </LinearLayout>
   </LinearLayout>

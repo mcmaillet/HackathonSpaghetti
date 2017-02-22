@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#000000">
+  <Button
+  android:id="@+id/btn_addpatient"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="+ Add"
+  android:textColor="#ffffff"
+  android:gravity="right"/>
     <ListView
         android:id="@+id/lv_patient_list"
         android:layout_width="fill_parent"

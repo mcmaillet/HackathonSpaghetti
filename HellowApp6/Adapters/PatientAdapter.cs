@@ -56,7 +56,23 @@ namespace HellowApp6.Adapters
 
             sw_monitor.Click += delegate
             {
-                UpdatePatient(Patients[i]);
+                try
+                {
+                    UpdatePatient(Patients[i]);
+                    if (sw_monitor.Checked)
+                    {
+                        Toast.MakeText(A, "Patient is now being monitored", ToastLength.Short);
+                    }
+                    else
+                    {
+                        Toast.MakeText(A, "Patient is no longer being monitored", ToastLength.Short);
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    Toast.MakeText(A, "Error modifying monitor status", ToastLength.Short);
+                }
+
             };
 
             iv_info.Click += delegate

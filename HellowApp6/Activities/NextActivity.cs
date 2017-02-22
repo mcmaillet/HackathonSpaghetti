@@ -14,6 +14,7 @@ using Android.Widget;
 using Android.Locations;
 
 using HellowApp6.Entities;
+using HellowApp6.NetworkUtils;
 
 using Newtonsoft.Json;
 
@@ -24,6 +25,8 @@ namespace HellowApp6
     {
         Service1Connection democon;
         int bpm = 0;
+        public static TextView patientbpm;
+        public static EditText patientinject;
         protected override void OnStart()
         {
             base.OnStart();
@@ -40,6 +43,8 @@ namespace HellowApp6
             jsonpatient = Intent.Extras.GetString("details");
             Patient patient = JsonConvert.DeserializeObject<Patient>(jsonpatient);
 
+            patientbpm = (TextView)FindViewById(Resource.Id.tv_current_heartbeat);
+
             var ib_device = (ImageButton)FindViewById(Resource.Id.ib_device);
             var et_name = (EditText)FindViewById(Resource.Id.et_name);
             var et_age = (EditText)FindViewById(Resource.Id.et_age);
@@ -48,6 +53,11 @@ namespace HellowApp6
             var sw_monitor_hr = (Switch)FindViewById(Resource.Id.sw_monitor_hr);
             var et_highHr = (EditText)FindViewById(Resource.Id.et_highHr);
             var et_lowHr = (EditText)FindViewById(Resource.Id.et_lowHr);
+            patientinject = (EditText)FindViewById(Resource.Id.et_injection);
+
+            var btn_inject = (Button)FindViewById(Resource.Id.btn_inject);
+
+            var ib_location = (ImageButton)FindViewById(Resource.Id.ib_location);
 
             var ib_edit_name = (ImageButton)FindViewById(Resource.Id.ib_edit_name);
             var ib_save_name = (ImageButton)FindViewById(Resource.Id.ib_save_name);
@@ -69,9 +79,21 @@ namespace HellowApp6
             et_highHr.Text = ""+patient.highHr;
             et_lowHr.Text = "" + patient.lowHr;
 
+            btn_inject.Click += delegate
+              {
+                  InjectPatient(patient);
+              };
+
+            ib_location.Click += delegate
+              {
+                  ShowGoogleMapsLocation(patient);
+              };
+
             ib_emerg.Click += delegate
               {
-
+                  var uri = Android.Net.Uri.Parse("tel:" + patient.emergPhone);
+                  var intent = new Intent ( Intent.ActionDial, uri );
+                  StartActivity ( intent );
               };
 
             ib_device.Click += delegate
@@ -84,8 +106,6 @@ namespace HellowApp6
                   tv_device_id.Text = patient.id;
                   builder.Show();
               };
-
-            
 
             ib_save_name.Click += delegate
               {
@@ -123,13 +143,35 @@ namespace HellowApp6
                   et_highHr.Enabled = true;
                   et_lowHr.Enabled = true;
               };
-
-            //ib_location.Click += delegate
-            //{
-            //    ShowGoogleMapsLocation(patient);
-            //};
-
+            getVitalsAsync(patient);
             //var timer = new System.Threading.Timer(e => blah(), null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+        }
+        private void InjectPatient(Patient PATinject)
+        {
+            string uri = PatientsNetworkUtils.CONTROLLER_BASE_ADDRESS + "/";
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Add(
+            new MediaTypeWithQualityHeaderValue("application/json"));
+            httpClient.BaseAddress = new Uri(uri);
+            /*var postContent = new FormUrlEncodedContent ( new []
+            {
+                new KeyValuePair<string, string>("name", patientName)
+                
+            } );*/
+
+            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, "");
+            string jsonInject = "{ \"volume\":\"" + patientinject.Text + "\"}";
+            request.Content = new StringContent(jsonInject,
+                Encoding.UTF8,
+                "application/json");
+            //var response = httpClient.SendAsync(request).Result;
+
+
+
+            //response.EnsureSuccessStatusCode();
+
+
+            //string content = await response.Content.ReadAsStringAsync();
         }
         private async void UpdatePatient(Patient PATupdate)
         {
@@ -161,6 +203,30 @@ namespace HellowApp6
             }
             //UI threading problem!!
             //tv_desc.Text = ""+bpm;
+        }
+        public async void getVitalsAsync(Patient pat)
+        {
+            string patientVitalsUrl = PatientsNetworkUtils.CONTROLLER_BASE_ADDRESS + "/Readings?device=" + pat.id;
+
+            HttpClient client = PatientsNetworkUtils.GetClient(patientVitalsUrl);
+
+            string response = await client.GetStringAsync("");
+
+            var vitals = JsonConvert.DeserializeObject<IEnumerable<Vital>>(response).ToList();
+            if (vitals.Count == 0)
+            {
+                patientbpm.Text = "Not Found";
+            }
+            else
+            {
+                patientbpm.Text = vitals[0].value.ToString();
+            }
+        }
+        public class Vital
+        {
+            public string meaning { get; set; }
+            public int value { get; set; }
+            public object received { get; set; }
         }
     }
 }

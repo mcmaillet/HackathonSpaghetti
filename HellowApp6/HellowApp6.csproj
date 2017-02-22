@@ -61,6 +61,7 @@
     <Compile Include="IGetBPM.cs" />
     <Compile Include="Activities\MainActivity.cs" />
     <Compile Include="Activities\NextActivity.cs" />
+    <Compile Include="NetworkUtils\PatientsNetworkUtils.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service1.cs" />
@@ -81,6 +82,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\dialog_device.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\register_patient_layout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
