@@ -1,0 +1,24 @@
+HellowApp6.MainActivity, HellowApp6;md5a49f02afadc3a80d8926e5c763f27ea6.MainActivity
+HellowApp6.MainActivity, HellowApp6, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5a49f02afadc3a80d8926e5c763f27ea6.MainActivity
+HellowApp6.MainActivity;md5a49f02afadc3a80d8926e5c763f27ea6.MainActivity
+hellowapp6.MainActivity;md5a49f02afadc3a80d8926e5c763f27ea6.MainActivity
+HellowApp6.NextActivity, HellowApp6;md5a49f02afadc3a80d8926e5c763f27ea6.NextActivity
+HellowApp6.NextActivity, HellowApp6, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5a49f02afadc3a80d8926e5c763f27ea6.NextActivity
+HellowApp6.NextActivity;md5a49f02afadc3a80d8926e5c763f27ea6.NextActivity
+hellowapp6.NextActivity;md5a49f02afadc3a80d8926e5c763f27ea6.NextActivity
+HellowApp6.Service1, HellowApp6;com.xamarin.test.testname
+HellowApp6.Service1, HellowApp6, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;com.xamarin.test.testname
+HellowApp6.Service1;com.xamarin.test.testname
+com.xamarin.test.testname;com.xamarin.test.testname
+HellowApp6.Service1Binder, HellowApp6;md5a49f02afadc3a80d8926e5c763f27ea6.Service1Binder
+HellowApp6.Service1Binder, HellowApp6, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5a49f02afadc3a80d8926e5c763f27ea6.Service1Binder
+HellowApp6.Service1Binder;md5a49f02afadc3a80d8926e5c763f27ea6.Service1Binder
+hellowapp6.Service1Binder;md5a49f02afadc3a80d8926e5c763f27ea6.Service1Binder
+HellowApp6.Service1Connection, HellowApp6;md5a49f02afadc3a80d8926e5c763f27ea6.Service1Connection
+HellowApp6.Service1Connection, HellowApp6, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5a49f02afadc3a80d8926e5c763f27ea6.Service1Connection
+HellowApp6.Service1Connection;md5a49f02afadc3a80d8926e5c763f27ea6.Service1Connection
+hellowapp6.Service1Connection;md5a49f02afadc3a80d8926e5c763f27ea6.Service1Connection
+HellowApp6.Adapters.PatientAdapter, HellowApp6;md508049062bf38265b108c22bd9ccc53e3.PatientAdapter
+HellowApp6.Adapters.PatientAdapter, HellowApp6, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md508049062bf38265b108c22bd9ccc53e3.PatientAdapter
+HellowApp6.Adapters.PatientAdapter;md508049062bf38265b108c22bd9ccc53e3.PatientAdapter
+hellowapp6.adapters.PatientAdapter;md508049062bf38265b108c22bd9ccc53e3.PatientAdapter
