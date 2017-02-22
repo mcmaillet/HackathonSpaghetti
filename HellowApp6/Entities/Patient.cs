@@ -21,6 +21,8 @@ namespace HellowApp6.Entities
         public string latitude { get; set; }
         public string longitude { get; set; }
         public string created { get; set; }
+        public int? lowHr { get; set; }
+        public int? highHr { get; set; }
         public bool monitor { get; set; }
         public Patient()
         {

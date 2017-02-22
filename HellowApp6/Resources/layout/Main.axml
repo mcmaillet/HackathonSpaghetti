@@ -3,13 +3,12 @@
     android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-  android:background="#ffffff">
-<ListView
-  android:id="@+id/lv_patient_list"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:background="@drawable/patientlistbg"
-  android:layout_margin="5dp"
-  android:padding="10dp"
-/>
+    android:background="#000000">
+    <ListView
+        android:id="@+id/lv_patient_list"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/patientlistbg"
+        android:layout_margin="5dp"
+        android:padding="10dp" />
 </LinearLayout>

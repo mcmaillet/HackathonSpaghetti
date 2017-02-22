@@ -14,7 +14,7 @@
     android:paddingRight="5dp">
     <ImageButton
         android:id="@+id/iv_info"
-        android:src="@drawable/Info2"
+        android:src="@drawable/Info"
         android:layout_width="0dp"
         android:layout_weight="0.2"
         android:layout_height="64dp"

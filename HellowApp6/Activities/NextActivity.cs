@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 using Android.App;
 using Android.Content;
@@ -38,23 +40,108 @@ namespace HellowApp6
             jsonpatient = Intent.Extras.GetString("details");
             Patient patient = JsonConvert.DeserializeObject<Patient>(jsonpatient);
 
-            var tv_id = (TextView)FindViewById(Resource.Id.tv_id);
-            var tv_name = (TextView)FindViewById(Resource.Id.tv_name);
-            var tv_age = (TextView)FindViewById(Resource.Id.tv_age);
+            var ib_device = (ImageButton)FindViewById(Resource.Id.ib_device);
+            var et_name = (EditText)FindViewById(Resource.Id.et_name);
+            var et_age = (EditText)FindViewById(Resource.Id.et_age);
+            var ib_emerg = (ImageButton)FindViewById(Resource.Id.ib_emerg);
             var tv_created = (TextView)FindViewById(Resource.Id.tv_created);
-            var tv_location = (TextView)FindViewById(Resource.Id.tv_location);
+            var sw_monitor_hr = (Switch)FindViewById(Resource.Id.sw_monitor_hr);
+            var et_highHr = (EditText)FindViewById(Resource.Id.et_highHr);
+            var et_lowHr = (EditText)FindViewById(Resource.Id.et_lowHr);
 
-            tv_id.Text = patient.id;
-            tv_name.Text = patient.name;
-            tv_age.Text = "" + patient.age;
-            tv_location.Text = "Lon.: "+patient.longitude + "\nLat.: " + patient.latitude;
-            tv_created.Text = patient.created;
+            var ib_edit_name = (ImageButton)FindViewById(Resource.Id.ib_edit_name);
+            var ib_save_name = (ImageButton)FindViewById(Resource.Id.ib_save_name);
+            ib_save_name.Visibility = ViewStates.Gone;
+            var ib_edit_hrrange = (ImageButton)FindViewById(Resource.Id.ib_edit_hrrange);
+            var ib_save_hrrange = (ImageButton)FindViewById(Resource.Id.ib_save_hrrange);
+            ib_save_hrrange.Visibility = ViewStates.Gone;
+            var ib_edit_emerg = (ImageButton)FindViewById(Resource.Id.ib_edit_emerg);
+            var ib_save_emerg = (ImageButton)FindViewById(Resource.Id.ib_save_emerg);
+            ib_save_emerg.Visibility = ViewStates.Gone;
+            var ib_edit_age = (ImageButton)FindViewById(Resource.Id.ib_edit_age);
+            var ib_save_age = (ImageButton)FindViewById(Resource.Id.ib_save_age);
+            ib_save_age.Visibility = ViewStates.Gone;
 
-            tv_location.Click += delegate
-            {
-                ShowGoogleMapsLocation(patient);
-            };
+            et_name.Text = patient.name;
+            et_age.Text = "" + patient.age;
+            tv_created.Text = patient.created.Substring(0,patient.created.IndexOf('T'));
+            sw_monitor_hr.Checked = patient.monitor;
+            et_highHr.Text = ""+patient.highHr;
+            et_lowHr.Text = "" + patient.lowHr;
+
+            ib_emerg.Click += delegate
+              {
+
+              };
+
+            ib_device.Click += delegate
+              {
+                  View view = LayoutInflater.Inflate(Resource.Layout.dialog_device, null);
+                  AlertDialog builder = new AlertDialog.Builder(this).Create();
+                  builder.SetView(view);
+                  builder.SetCanceledOnTouchOutside(true);
+                  TextView tv_device_id = view.FindViewById<TextView>(Resource.Id.tv_device_id);
+                  tv_device_id.Text = patient.id;
+                  builder.Show();
+              };
+
+            
+
+            ib_save_name.Click += delegate
+              {
+                  patient.name = et_name.Text;
+                  UpdatePatient(patient);
+
+                  et_name.Enabled = false;
+                  ib_save_name.Visibility = ViewStates.Gone;
+                  ib_edit_name.Visibility = ViewStates.Visible;
+              };
+
+            ib_edit_name.Click += delegate
+              {
+                  ib_save_name.Visibility = ViewStates.Visible;
+                  ib_edit_name.Visibility = ViewStates.Gone;
+                  et_name.Enabled = true;
+              };
+
+            ib_save_hrrange.Click += delegate
+              {
+                  patient.highHr = Convert.ToInt32(et_highHr.Text);
+                  patient.lowHr = Convert.ToInt32(et_lowHr.Text);
+                  UpdatePatient(patient);
+
+                  et_highHr.Enabled = false;
+                  et_lowHr.Enabled = false;
+                  ib_save_hrrange.Visibility = ViewStates.Gone;
+                  ib_edit_hrrange.Visibility = ViewStates.Visible;
+              };
+
+            ib_edit_hrrange.Click += delegate
+              {
+                  ib_save_hrrange.Visibility = ViewStates.Visible;
+                  ib_edit_hrrange.Visibility = ViewStates.Gone;
+                  et_highHr.Enabled = true;
+                  et_lowHr.Enabled = true;
+              };
+
+            //ib_location.Click += delegate
+            //{
+            //    ShowGoogleMapsLocation(patient);
+            //};
+
             //var timer = new System.Threading.Timer(e => blah(), null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
+        }
+        private async void UpdatePatient(Patient PATupdate)
+        {
+            var JSONpatient = JsonConvert.SerializeObject(PATupdate);
+
+            HttpClient htc = new HttpClient();
+            htc.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            HttpRequestMessage hrm = new HttpRequestMessage(HttpMethod.Post, "");
+            hrm.Content = new StringContent(JSONpatient, Encoding.UTF8, "application/json");
+
+            HttpResponseMessage response = await htc.PostAsync("https://aa798a67.ngrok.io/api/Patients", hrm.Content);
         }
         protected void ShowGoogleMapsLocation(Patient p)
         {

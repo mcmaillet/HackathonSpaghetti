@@ -20,8 +20,13 @@ C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\
 C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\drawable\patientlistbg.xml
 C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\drawable\patientlistitembg.xml
 C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\drawable\heart.png
-C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\drawable\info2.png
 C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\drawable\patientdetailsbg.xml
+C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\drawable\phone.png
+C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\drawable\device.png
+C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\drawable\location.png
+C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\layout\dialog_device.xml
+C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\drawable\editmode.png
+C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\drawable\save.png
 C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\bin\Debug\HellowApp6.dll.mdb
 C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\bin\Debug\Java.Interop.dll.mdb
 C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\bin\Debug\Microsoft.CSharp.dll.mdb
@@ -51,6 +56,6 @@ C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\
 C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\android\assets\System.Xml.dll.mdb
 C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\android\assets\System.Xml.Linq.dll.mdb
 C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\HellowApp6.csprojResolveAssemblyReference.cache
-C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\drawable\phone.png
+C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\res\drawable\identity.png
 C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\obj\Debug\HellowApp6.dll.mdb
 C:\Users\740657\Documents\Visual Studio 2015\Projects\HellowApp6\HellowApp6\bin\Debug\HellowApp6.dll.mdb

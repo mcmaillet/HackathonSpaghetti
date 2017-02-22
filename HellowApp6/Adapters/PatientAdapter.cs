@@ -71,7 +71,6 @@ namespace HellowApp6.Adapters
 
             return view;
         }
-
         private async void UpdatePatient(Patient PATupdate)
         {
             var updatePatient = PATupdate;
