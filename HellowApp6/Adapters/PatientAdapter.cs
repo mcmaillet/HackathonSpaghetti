@@ -84,6 +84,7 @@ namespace HellowApp6.Adapters
             };
 
             tv_name.Text = Patients[i].name;
+            sw_monitor.Checked = Patients[i].monitor;
 
             return view;
         }

@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using HellowApp6.Entities;
 
 namespace HellowApp6
 {
@@ -23,6 +24,10 @@ namespace HellowApp6
         public int GetBPM()
         {
             return Service.GetBPM();
+        }
+        public void setMonitoredPatient(Patient patient)
+        {
+            Service.setMonitoredPatient(patient);
         }
     }
 }

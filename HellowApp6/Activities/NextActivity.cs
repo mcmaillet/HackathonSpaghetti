@@ -24,15 +24,24 @@ namespace HellowApp6
     public class NextActivity : Activity
     {
         Service1Connection democon;
+        private bool _binderSet = true;
         int bpm = 0;
         public static TextView patientbpm;
         public static EditText patientinject;
+        Patient patient;
         protected override void OnStart()
         {
             base.OnStart();
             democon = new Service1Connection();
             var demoServiceIntent = new Intent(this, typeof(Service1));
             BindService(demoServiceIntent, democon, Bind.AutoCreate);
+
+            var timer = new System.Threading.Timer(
+                            e => setButtonTextFromService(),
+                                null,
+                                TimeSpan.Zero,
+                                TimeSpan.FromSeconds(5));
+
         }
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -41,7 +50,7 @@ namespace HellowApp6
 
             string jsonpatient = "";
             jsonpatient = Intent.Extras.GetString("details");
-            Patient patient = JsonConvert.DeserializeObject<Patient>(jsonpatient);
+            patient = JsonConvert.DeserializeObject<Patient>(jsonpatient);
 
             patientbpm = (TextView)FindViewById(Resource.Id.tv_current_heartbeat);
 
@@ -78,6 +87,12 @@ namespace HellowApp6
             sw_monitor_hr.Checked = patient.monitor;
             et_highHr.Text = ""+patient.highHr;
             et_lowHr.Text = "" + patient.lowHr;
+
+            sw_monitor_hr.Click += delegate
+              {
+                  patient.monitor = sw_monitor_hr.Checked;
+                  UpdatePatient(patient);
+              };
 
             btn_inject.Click += delegate
               {
@@ -144,7 +159,6 @@ namespace HellowApp6
                   et_lowHr.Enabled = true;
               };
             getVitalsAsync(patient);
-            //var timer = new System.Threading.Timer(e => blah(), null, TimeSpan.Zero, TimeSpan.FromSeconds(5));
         }
         private void InjectPatient(Patient PATinject)
         {
@@ -173,6 +187,29 @@ namespace HellowApp6
 
             //string content = await response.Content.ReadAsStringAsync();
         }
+        private void setButtonTextFromService()
+        {
+            if (democon == null || democon.Binder == null)
+            {
+                return;
+            }
+            if (_binderSet)
+            {
+                democon.Binder.setMonitoredPatient(patient);
+                _binderSet = false;
+            }
+
+            else
+            {
+                int testGetBPM = democon.Binder.GetBPM();
+
+                RunOnUiThread(() =>
+                {
+
+                    patientbpm.Text = testGetBPM.ToString();
+                });
+            }
+        }
         private async void UpdatePatient(Patient PATupdate)
         {
             var JSONpatient = JsonConvert.SerializeObject(PATupdate);
@@ -187,22 +224,10 @@ namespace HellowApp6
         }
         protected void ShowGoogleMapsLocation(Patient p)
         {
-            //LocationManager lm = (LocationManager)GetSystemService(LocationService);
-            //Criteria crit = new Criteria { Accuracy = Accuracy.Fine };
-            //Location loc = lm.GetLastKnownLocation(lm.GetBestProvider(crit, true));
             string coord = p.latitude + "," + p.longitude;
             var geoUri = Android.Net.Uri.Parse("geo:" + coord + "?q=" + coord + "(" + p.name + ")");
             var mapIntent = new Intent(Intent.ActionView, geoUri);
             StartActivity(mapIntent);
-        }
-        protected void blah()
-        {
-            if (democon.Binder != null && democon!=null)
-            {
-                bpm = democon.Binder.GetBPM();   //Gets BPM from service
-            }
-            //UI threading problem!!
-            //tv_desc.Text = ""+bpm;
         }
         public async void getVitalsAsync(Patient pat)
         {

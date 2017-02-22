@@ -66,7 +66,6 @@ namespace HellowApp6
                   };
                 builder.Show();
             };
-
         }
         private async void RegisterPatient(AlertDialog ad,Patient patRegister)
         {
@@ -103,11 +102,7 @@ namespace HellowApp6
         protected override void OnResume()
         {
             base.OnResume();
-            if (patientadded)
-            {
-                Toast.MakeText(this, "Patient added to database!", ToastLength.Short);
-                patientadded = false;
-            }
+            GetPatientList();
         }
     }
 }
