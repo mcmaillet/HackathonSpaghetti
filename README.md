@@ -1,2 +1,3 @@
 # HackathonSpaghetti
-Clipped code
+University of Calgary Hackathon submission
+February 22 2017
