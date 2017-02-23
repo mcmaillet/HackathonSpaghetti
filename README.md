@@ -1,7 +1,10 @@
 # HackathonSpaghetti
 University of Calgary Hackathon submission
+
 February 22 2017
+
 Xamarin project win
+
 3rd place overall finisher
 
 Configured to connect with ngrok webservice handling http requests and a
