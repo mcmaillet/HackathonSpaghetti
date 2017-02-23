@@ -16,7 +16,7 @@ namespace HellowApp6.NetworkUtils
 {
     public static class PatientsNetworkUtils
     {
-        public static string CONTROLLER_BASE_ADDRESS = "https://aa798a67.ngrok.io/api/Patients";
+        public static string CONTROLLER_BASE_ADDRESS = "http://32d40c6f.ngrok.io/api/Patients";
         public static string POKEMON_TESTER = "http://pokeapi.co/api/v2/pokemon/charizard";
 
         public static HttpClient GetClient(string address)

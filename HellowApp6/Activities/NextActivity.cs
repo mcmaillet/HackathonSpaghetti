@@ -160,9 +160,9 @@ namespace HellowApp6
               };
             getVitalsAsync(patient);
         }
-        private void InjectPatient(Patient PATinject)
+        private async void InjectPatient(Patient PATinject)
         {
-            string uri = PatientsNetworkUtils.CONTROLLER_BASE_ADDRESS + "/";
+            string uri = "http://ccc6a7e9.ngrok.io/pump";
             var httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
@@ -178,14 +178,14 @@ namespace HellowApp6
             request.Content = new StringContent(jsonInject,
                 Encoding.UTF8,
                 "application/json");
-            //var response = httpClient.SendAsync(request).Result;
+            var response = httpClient.SendAsync(request).Result;
 
 
 
-            //response.EnsureSuccessStatusCode();
+            response.EnsureSuccessStatusCode();
 
 
-            //string content = await response.Content.ReadAsStringAsync();
+            string content = await response.Content.ReadAsStringAsync();
         }
         private void setButtonTextFromService()
         {
@@ -220,7 +220,7 @@ namespace HellowApp6
             HttpRequestMessage hrm = new HttpRequestMessage(HttpMethod.Post, "");
             hrm.Content = new StringContent(JSONpatient, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response = await htc.PostAsync("https://aa798a67.ngrok.io/api/Patients", hrm.Content);
+            HttpResponseMessage response = await htc.PostAsync("http://32d40c6f.ngrok.io/api/Patients", hrm.Content);
         }
         protected void ShowGoogleMapsLocation(Patient p)
         {
@@ -250,7 +250,7 @@ namespace HellowApp6
         public class Vital
         {
             public string meaning { get; set; }
-            public int value { get; set; }
+            public double value { get; set; }
             public object received { get; set; }
         }
     }

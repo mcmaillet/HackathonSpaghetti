@@ -93,7 +93,7 @@ namespace HellowApp6
             lvPatientList = (ListView)FindViewById(Resource.Id.lv_patient_list);
             using (HttpClient htc = new HttpClient())
             {
-                string response = await htc.GetStringAsync("https://aa798a67.ngrok.io/api/Patients");
+                string response = await htc.GetStringAsync("http://32d40c6f.ngrok.io/api/Patients");
                 Patients = JsonConvert.DeserializeObject<List<Patient>>(response);
                 pa = new PatientAdapter(this, Patients);
             }

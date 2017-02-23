@@ -32,7 +32,7 @@ public final class R {
         public static final int btn_register_patient=0x7f05002c;
         public static final int et_age=0x7f05001a;
         public static final int et_emergPhone=0x7f05002b;
-        public static final int et_highHr=0x7f050024;
+        public static final int et_highHr=0x7f050023;
         public static final int et_injection=0x7f050028;
         public static final int et_lowHr=0x7f050025;
         public static final int et_name=0x7f05000d;
@@ -68,7 +68,7 @@ public final class R {
         public static final int tv_hr_label=0x7f050020;
         public static final int tv_list_filler=0x7f050002;
         public static final int tv_location_label=0x7f050017;
-        public static final int tv_lowHr_label=0x7f050023;
+        public static final int tv_lowHr_label=0x7f050024;
         public static final int tv_monitors_label=0x7f05001f;
         public static final int tv_name=0x7f050003;
         public static final int tv_quick_bpm=0x7f050005;

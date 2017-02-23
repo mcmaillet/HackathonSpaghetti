@@ -22,7 +22,7 @@ namespace HellowApp6
     {
         private Patient _patient;
         private int i;
-        private List<int> BPM = new List<int>();
+        private List<double> BPM = new List<double>();
         public override IBinder OnBind(Intent intent)
         {
             return new Service1Binder(this);
@@ -62,7 +62,7 @@ namespace HellowApp6
     public class Vital
     {
         public string meaning { get; set; }
-        public int value { get; set; }
+        public double value { get; set; }
         public object received { get; set; }
     }
 }

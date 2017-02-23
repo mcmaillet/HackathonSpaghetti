@@ -100,7 +100,7 @@ namespace HellowApp6.Adapters
             HttpRequestMessage hrm = new HttpRequestMessage(HttpMethod.Post, "");
             hrm.Content = new StringContent(JSONpatient,Encoding.UTF8,"application/json");
 
-            HttpResponseMessage response = await htc.PostAsync("https://aa798a67.ngrok.io/api/Patients",hrm.Content);
+            HttpResponseMessage response = await htc.PostAsync("http://32d40c6f.ngrok.io/api/Patients", hrm.Content);
         }
     }
 }
