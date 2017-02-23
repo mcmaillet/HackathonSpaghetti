@@ -17,21 +17,23 @@ using Newtonsoft.Json;
 
 namespace HellowApp6
 {
-    [Service(Name ="com.xamarin.test.testname")]
+    [Service(Name ="service.getbpm")]
     public class Service1 : Service
     {
         private Patient _patient;
-        private int i;
         private List<double> BPM = new List<double>();
         public override IBinder OnBind(Intent intent)
         {
             return new Service1Binder(this);
         }
-        public int GetBPM()
+        public double GetBPM()
         {
-            i = 143;
+            if (BPM.Count == 0)
+            {
+                return 0;
+            }
 
-            return i;
+            return BPM[BPM.Count - 1];
         }
         public void setMonitoredPatient(Patient patient)
         {
