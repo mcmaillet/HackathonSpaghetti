@@ -21,7 +21,7 @@ namespace HellowApp6
         {
             this.Service = service;
         }
-        public int GetBPM()
+        public double GetBPM()
         {
             return Service.GetBPM();
         }

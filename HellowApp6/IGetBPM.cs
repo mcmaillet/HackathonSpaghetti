@@ -16,7 +16,7 @@ namespace HellowApp6
 {
     public interface IGetBPM
     {
-        int GetBPM();
+        double GetBPM();
         void setMonitoredPatient(Patient patient);
     }
 }
